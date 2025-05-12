@@ -307,7 +307,7 @@ public class ndStackBuilder {
 
             if(projMethod!=NO_PROJECTION) for(int i=0; i<fileNames.size(); i++) out.getStack().setSliceLabel(fileNames.get(i), i+1);
 
-            int nC=wave!=nd.ALL_WAVES?1:nd.NWavelengths;
+            int nC=wave!=ndFile.ALL_WAVES?1:nd.NWavelengths;
             int nZ=projMethod==NO_PROJECTION?nd.NZSteps:1;
             int nT=out.getImageStackSize()/nC/nZ;
             
@@ -315,7 +315,7 @@ public class ndStackBuilder {
             out.setDimensions(nC, nZ, nT);
 
             CompositeImage ci=null;;
-            if(wave==nd.ALL_WAVES && nd.NWavelengths!=1){
+            if(wave==ndFile.ALL_WAVES && nd.NWavelengths!=1){
                 new HyperStackConverter().shuffle(out, HyperStackConverter.ZTC);
 
                 ci=new CompositeImage(out, CompositeImage.COMPOSITE);

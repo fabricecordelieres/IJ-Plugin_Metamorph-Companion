@@ -106,7 +106,8 @@ public class batchBuildNdStack implements PlugIn, DialogListener{
      * Graphical user interface, asking for the parameters to use
      * @return true if the dialog was OKed, false otherwise
      */
-    public boolean GUI(){
+    @SuppressWarnings("unchecked")
+	public boolean GUI(){
         gd=new GenericDialog("Batch nd stack builder");
         gd.addChoice("Z_mode", zMode, zMode[0]);
         gd.addChoice("Projection_mode", ZProjector.METHODS, ZProjector.METHODS[0]);

@@ -246,11 +246,13 @@ public class ndFile {
      */
     private int getTag(String line){
         int tag=-1;
-        for (int i=0; i<TAGS.length; i++){
-            if(line.contains(TAGS[i])){
-                tag=i;
-                i=TAGS.length;
-            }
+        if(line!=null) {
+	        for (int i=0; i<TAGS.length; i++){
+	            if(line.contains(TAGS[i])){
+	                tag=i;
+	                i=TAGS.length;
+	            }
+	        }
         }
         return tag;
     }

@@ -72,7 +72,8 @@ public class transformStgPos implements PlugIn, DialogListener{
      * This method is called when the plugin is loaded.
      * @param arg argument specified for this plugin in IJ_Props.txt (may be blank)
      */
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public void run(String arg) {
         OpenDialog od=new OpenDialog("Where is the stage positions file ?", null);
         

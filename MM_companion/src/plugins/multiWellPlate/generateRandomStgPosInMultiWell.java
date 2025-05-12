@@ -116,7 +116,8 @@ public class generateRandomStgPosInMultiWell implements PlugIn, DialogListener{
      * Second graphical user interface, asking the options to be used for the multi-well plate to generate
      * @return true if the dialog was OKed, false otherwise
      */
-    public boolean GUIbis(){
+    @SuppressWarnings("unchecked")
+	public boolean GUIbis(){
         GenericDialog gd=new GenericDialog("Muti-well plate to STG file: Options");
         gd.addMessage("Enable/Disable wells:");
         gd.addMessage("");

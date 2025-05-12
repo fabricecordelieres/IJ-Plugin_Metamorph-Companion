@@ -176,7 +176,8 @@ public class buildNdStack implements PlugIn, DialogListener{
      * Graphical user interface, asking for the parameters to use
      * @return true if the dialog was OKed, false otherwise
      */
-    public boolean GUI(){
+    @SuppressWarnings("unchecked")
+	public boolean GUI(){
         gd=new GenericDialog("nd stack builder");
         gd.addCheckbox("Build_all_positions", buildAllPosition);
         gd.addChoice("Position_to_build", posNames, posNames[0]);
