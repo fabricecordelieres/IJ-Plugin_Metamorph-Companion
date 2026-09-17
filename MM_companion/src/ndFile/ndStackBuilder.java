@@ -190,7 +190,7 @@ public class ndStackBuilder {
         startPosition=0;
         stopPosition=nd.NStagePositions-1;
         startWave=0;
-        stopWave=nd.NWavelengths==0?0:nd.NWavelengths-1;
+        stopWave=nd.getChannelCount()-1;
         startTime=1;
         stopTime=nd.NTimePoints;
         startSlice=1;
@@ -210,7 +210,7 @@ public class ndStackBuilder {
         bitDepth=0;
         
         for(int pos=startPosition; pos<=stopPosition; pos++){
-            if(hyperStack && startWave==0 && stopWave==nd.NWavelengths-1){
+            if(hyperStack && startWave==0 && stopWave==nd.getChannelCount()-1){
                 //Full hyperstack
                 fileNames=nd.getImageList(pos, ndFile.ALL_WAVES, startTime, stopTime, true);
                 buildAndSaveHyperStack(outputDirectory, pos, ndFile.ALL_WAVES);
@@ -307,7 +307,7 @@ public class ndStackBuilder {
 
             if(projMethod!=NO_PROJECTION) for(int i=0; i<fileNames.size(); i++) out.getStack().setSliceLabel(fileNames.get(i), i+1);
 
-            int nC=wave!=ndFile.ALL_WAVES?1:nd.NWavelengths;
+            int nC=wave!=ndFile.ALL_WAVES?1:nd.getChannelCount();
             int nZ=projMethod==NO_PROJECTION?nd.NZSteps:1;
             int nT=out.getImageStackSize()/nC/nZ;
             
@@ -315,7 +315,7 @@ public class ndStackBuilder {
             out.setDimensions(nC, nZ, nT);
 
             CompositeImage ci=null;;
-            if(wave==ndFile.ALL_WAVES && nd.NWavelengths!=1){
+            if(wave==ndFile.ALL_WAVES && nd.getChannelCount()!=1){
                 new HyperStackConverter().shuffle(out, HyperStackConverter.ZTC);
 
                 ci=new CompositeImage(out, CompositeImage.COMPOSITE);

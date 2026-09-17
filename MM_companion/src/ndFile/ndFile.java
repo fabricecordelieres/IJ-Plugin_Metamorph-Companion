@@ -492,7 +492,7 @@ public class ndFile {
     public ArrayList<String> getImageList(int position, int wave, int startTime, int stopTime, boolean overWPC){
        ArrayList<String> out=new ArrayList<String>();
        int startWave=wave==ALL_WAVES?0:wave;
-       int stopWave=wave==ALL_WAVES?(NWavelengths==0?1:NWavelengths):wave+1;
+       int stopWave=wave==ALL_WAVES?getChannelCount():wave+1;
        
        for(int i=startWave; i<stopWave; i++){
             ArrayList<Integer> wavePointsCollection=!Waves.isEmpty()?Waves.get(i).WavePointsCollected:null;
@@ -507,5 +507,8 @@ public class ndFile {
         }
 
         return out;
+    }
+    public int getChannelCount(){
+        return NWavelengths==0?1:NWavelengths;
     }
 }
