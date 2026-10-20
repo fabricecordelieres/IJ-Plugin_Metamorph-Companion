@@ -157,9 +157,9 @@ public class batchBuildNdStack implements PlugIn, DialogListener{
         ndStackBuilder nsb=new ndStackBuilder(nd);
         nsb.setZParameters(1, nd.NZSteps, zModeIndex==1?projModeIndex:ndStackBuilder.NO_PROJECTION);
         nsb.setOutputParameters(true, true, false);
-        
+
         if(saveModeIndex==1){
-            for(int i=0; i<nd.NWavelengths; i++){
+            for(int i=0; i<nd.getChannelCount(); i++){
                 nsb.setWavesParameters(i, i);
                 nsb.buildStacks(outDirectory);
             }
